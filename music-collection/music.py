@@ -12,7 +12,7 @@ def test(title, titles):
             return False
     return True
 
-def doit(title, titles):
+def run_test(title, titles):
     if not len(titles): return '""'
     if not test(title, titles): return ':('
 
@@ -36,5 +36,4 @@ for t in xrange(T):
     titles = [sys.stdin.readline().strip() for x in xrange(int(N))]
     print "Case #%d:" % (t + 1)
     for i in xrange(len(titles)):
-        print '%s' % doit(titles[i], titles[:i] + titles[i+1:])
-    
+        print run_test(titles[i], titles[:i] + titles[i+1:])
