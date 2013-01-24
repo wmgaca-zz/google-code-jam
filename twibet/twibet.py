@@ -5,9 +5,9 @@ def stdreadline(): return sys.stdin.readline().strip()
 def stdreadint(): return int(stdreadline())
 def stdreadints(): return [int(x.strip()) for x in stdreadline().split()]
 
-def process(start, monks):
+def process(day, monks):
     whispered, heard = set(), set()
-    whispering = set([start])
+    whispering = set([day])
     while True:
         if not whispering: break
         for w in whispering:
@@ -23,13 +23,12 @@ T = stdreadint()
 for t in xrange(1, T+1):
     N = stdreadint()
     
-    followers = collections.defaultdict(set)
+    monks = collections.defaultdict(set)
 
     for f, val in enumerate(stdreadints(), start=1):
-        followers[val].add(f)
+        monks[val].add(f)
     
     print 'Case #%d:' % (t)
-    #print followers
     for day in xrange(1, N+1):
-        print process(day, followers)
+        print process(day, monks)
         
